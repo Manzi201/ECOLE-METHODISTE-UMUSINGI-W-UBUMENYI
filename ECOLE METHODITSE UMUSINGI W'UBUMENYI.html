@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOLE METHODISTE UMUSINGI W'UBUMENYI STUDENT ATTENDANCE SYSTEM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('MANZI.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+        select, input[type="text"], input[type="number"], button {
+            padding: 12px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            width: auto;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .attendance-list {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .attendance-entry {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+        .attendance-entry button {
+            padding: 6px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+        .attendance-entry button.edit {
+            background-color: #FFA500;
+        }
+        .attendance-entry button.delete {
+            background-color: #f44336;
+        }
+        .summary {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .summary div {
+            width: 23%;
+            text-align: center;
+        }
+        .summary p {
+            font-size: 16px;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            form {
+                width: 100%;
+                padding: 15px;
+            }
+            .summary {
+                flex-direction: column;
+                align-items: center;
+            }
+            .summary div {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ECOLE METHODISTE UMUSINGI W'UBUMENYI</h1>
+        <h2>STUDENT ATTENDANCE SYSTEM</h2>
+
+        <!-- Teacher Name -->
+        <label for="userName">Enter your name (Teacher):</label>
+        <input type="text" id="userName" placeholder="Enter your name" required>
+
+        <form id="attendanceForm">
+            <!-- Select Class -->
+            <label for="class">Class:</label>
+            <select id="class" name="class" required>
+                <option value="">Select Class</option>
+                <option value="Baby Class">Baby Class</option>
+                <option value="Middle Class">Middle Class</option>
+                <option value="Top Class">Top Class</option>
+                <option value="P1">P1</option>
+                <option value="P2A">P2A</option>
+                <option value="P2B">P2B</option>
+                <option value="P3A">P3A</option>
+                <option value="P3B">P3B</option>
+                <option value="P4A">P4A</option>
+                <option value="P4B">P4B</option>
+                <option value="P5">P5</option>
+            </select>
+
+            <!-- Enter Absent Student Name -->
+            <label for="absentStudent">Enter Name of Absent Student(s):</label>
+            <input type="text" id="absentStudent" placeholder="Enter absent student names" required>
+
+            <!-- Number of Boys Present -->
+            <label for="boysPresent">Number of Boys Present:</label>
+            <input type="number" id="boysPresent" placeholder="Enter the number of boys present" min="0" required>
+
+            <!-- Number of Girls Present -->
+            <label for="girlsPresent">Number of Girls Present:</label>
+            <input type="number" id="girlsPresent" placeholder="Enter the number of girls present" min="0" required>
+
+            <!-- Number of Boys Absent -->
+            <label for="boysAbsent">Number of Boys Absent:</label>
+            <input type="number" id="boysAbsent" placeholder="Enter the number of boys absent" min="0" required>
+
+            <!-- Number of Girls Absent -->
+            <label for="girlsAbsent">Number of Girls Absent:</label>
+            <input type="number" id="girlsAbsent" placeholder="Enter the number of girls absent" min="0" required>
+
+            <!-- Select Day -->
+            <label for="day">Day of the Week:</label>
+            <select id="day" name="day" required>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Attendance</button>
+        </form>
+
+        <h2>Submitted Attendance</h2>
+        <div id="attendanceList"></div>
+
+        <button id="exportExcel">Export to Excel</button>
+
+        <div class="summary">
+            <div>
+                <p id="boysPresentSummary">Boys Present: 0</p>
+            </div>
+            <div>
+                <p id="boysAbsentSummary">Boys Absent: 0</p>
+            </div>
+            <div>
+                <p id="girlsPresentSummary">Girls Present: 0</p>
+            </div>
+            <div>
+                <p id="girlsAbsentSummary">Girls Absent: 0</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const classDropdown = document.getElementById("class");
+
+        // Display attendance data
+        function displayAttendance() {
+            const userName = document.getElementById('userName').value.trim();
+            if (!userName) {
+                alert('Please enter your name');
+                return;
+            }
+
+            const userAttendance = JSON.parse(localStorage.getItem(userName)) || [];
+            const attendanceList = document.getElementById('attendanceList');
+            attendanceList.innerHTML = '';
+
+            let totalBoysPresent = 0;
+            let totalBoysAbsent = 0;
+            let totalGirlsPresent = 0;
+            let totalGirlsAbsent = 0;
+
+            userAttendance.forEach((entry, index) => {
+                const div = document.createElement('div');
+                div.classList.add('attendance-entry');
+                div.innerHTML = 
+                    `<span>Class: ${entry.class}, Boys Present: ${entry.boysPresent}, Girls Present: ${entry.girlsPresent}, Boys Absent: ${entry.boysAbsent}, Girls Absent: ${entry.girlsAbsent}, Absent Students: ${entry.absentStudent}, Day: ${entry.day}</span>
+                    <div>
+                        <button class="edit" onclick="editAttendance(${index})">Edit</button>
+                        <button class="delete" onclick="deleteAttendance(${index})">Delete</button>
+                    </div>`;
+                attendanceList.appendChild(div);
+
+                totalBoysPresent += parseInt(entry.boysPresent, 10);
+                totalBoysAbsent += parseInt(entry.boysAbsent, 10);
+                totalGirlsPresent += parseInt(entry.girlsPresent, 10);
+                totalGirlsAbsent += parseInt(entry.girlsAbsent, 10);
+            });
+
+            document.getElementById('boysPresentSummary').textContent = `Boys Present: ${totalBoysPresent}`;
+            document.getElementById('boysAbsentSummary').textContent = `Boys Absent: ${totalBoysAbsent}`;
+            document.getElementById('girlsPresentSummary').textContent = `Girls Present: ${totalGirlsPresent}`;
+            document.getElementById('girlsAbsentSummary').textContent = `Girls Absent: ${totalGirlsAbsent}`;
+        }
+
+        // Save attendance data
+        document.getElementById('attendanceForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const userName = document.getElementById('userName').value.trim();
+            const className = classDropdown.value;
+            const absentStudent = document.getElementById('absentStudent').value;
+            const boysPresent = document.getElementById('boysPresent').value;
+            const girlsPresent = document.getElementById('girlsPresent').value;
+            const boysAbsent = document.getElementById('boysAbsent').value;
+            const girlsAbsent = document.getElementById('girlsAbsent').value;
+            const day = document.getElementById('day').value;
+
+            if (!className || !boysPresent || !girlsPresent || !boysAbsent || !girlsAbsent) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            const userAttendance = JSON.parse(localStorage.getItem(userName)) || [];
+            userAttendance.push({ class: className, absentStudent, boysPresent, girlsPresent, boysAbsent, girlsAbsent, day });
+            localStorage.setItem(userName, JSON.stringify(userAttendance));
+
+            document.getElementById('attendanceForm').reset();
+            displayAttendance();
+        });
+
+        // Delete attendance data
+        function deleteAttendance(index) {
+            const userName = document.getElementById('userName').value.trim();
+            const userAttendance = JSON.parse(localStorage.getItem(userName)) || [];
+            userAttendance.splice(index, 1);
+            localStorage.setItem(userName, JSON.stringify(userAttendance));
+            displayAttendance();
+        }
+
+        // Edit attendance data
+        function editAttendance(index) {
+            const userName = document.getElementById('userName').value.trim();
+            const userAttendance = JSON.parse(localStorage.getItem(userName)) || [];
+            const entry = userAttendance[index];
+
+            // Populate form with existing data
+            classDropdown.value = entry.class;
+            document.getElementById('absentStudent').value = entry.absentStudent;
+            document.getElementById('boysPresent').value = entry.boysPresent;
+            document.getElementById('girlsPresent').value = entry.girlsPresent;
+            document.getElementById('boysAbsent').value = entry.boysAbsent;
+            document.getElementById('girlsAbsent').value = entry.girlsAbsent;
+            document.getElementById('day').value = entry.day;
+
+            // Remove the entry temporarily, user will submit the edited version
+            deleteAttendance(index);
+        }
+
+        // Export attendance data to Excel
+        document.getElementById('exportExcel').addEventListener('click', function () {
+            const userName = document.getElementById('userName').value.trim();
+            if (!userName) {
+                alert('Please enter your name');
+                return;
+            }
+
+            const userAttendance = JSON.parse(localStorage.getItem(userName)) || [];
+            let csvContent = "Class,Boys Present,Girls Present,Boys Absent,Girls Absent,Absent Students,Day\n";
+
+            userAttendance.forEach(entry => {
+                csvContent += `${entry.class},${entry.boysPresent},${entry.girlsPresent},${entry.boysAbsent},${entry.girlsAbsent},${entry.absentStudent},${entry.day}\n`;
+            });
+
+            const encodedUri = encodeURI(`data:text/csv;charset=utf-8,${csvContent}`);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', `${userName}_attendance.csv`);
+            document.body.appendChild(link);
+            link.click();
+        });
+
+        // Initial display of attendance
+        displayAttendance();
+    </script>
+</body>
+</html>
+
+
